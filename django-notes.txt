@@ -1,0 +1,386 @@
+Day Objectives:
+----------------
+	-URL creation
+	    - path(p1,p2,p3)
+	    - path('urlname/',views.functionname,name of the url)
+package:
+--------
+	- it is collection of modules
+module:
+-------
+	- it is a collection of .py files
+
+	def fun name(request):
+		-http request(hypertext transfer protocol)
+		- http response
+			- heading tags(h1 to h6)
+		- css(cascading style sheets)
+			- syntax:
+				property:value;
+
+
+
+
+
+
+
+
+
+
+<h2 style=background-color:blue;color:red;font-size:70px;font-style:italic
+
+
+return HttpResponse("<h2 style=background-color:
+blue;color:red;font-size:70px;
+font-style:italic>Hai..guys..</h2>")
+
+Dynamic Url Mapping:
+--------------------
+	- static url
+	   path('urlname/',fn name,
+name of the url)
+	- dynamic url
+	   path('urlname/<datatype:variable>/',
+fn name,name of the url)
+
+
+ex:
+	localhost:8000/dynamic/4343653
+         my roll number is:4343653
+
+	-  .format()
+
+EX: a='python'
+    print("this is {} session.format(a))
+	 this is python session
+
+
+return HttpResponse("<h2 style=background-color:
+blue;color:red;font-size:70px;font-style:italic>
+My Roll number is:{}</h2>".format(id))
+
+
+return HttpResponse("My rollnumber is :{},
+My name is:{}".format(id,name))
+
+
+
+Django Templates:
+-----------------
+	- template:store .html files
+	  ---------
+		- render(p1,p2,p3)
+		- render(request,'html file location',dictionary)
+	
+html structure:
+----------------
+	<html>
+	<Doc type>
+	<head>
+		<title></title>
+	</head>
+	<body>
+	</body>
+	</html>
+template creation:
+------------------
+	- MyApp->newfolder->templates
+	- templates->newfolder->MyApp
+
+html tags:
+----------
+	- <input>
+	- <form>
+	- <br>
+	- <link>
+	- <script>
+	- <p>
+	- <button>
+	- <img>
+	- <a href=""
+	- <lable>
+	- <table>
+		<thead>,<tbody>,<th>,<tr>,<td>
+	- <marquee>
+	- <center>
+	- <style>
+
+table printing:
+---------------
+	- rows,columns
+
+Day Objectives:
+---------------
+	- external Css
+		- registration form
+			- username
+			- email id(username@gmail.com)
+			- mobile number
+			- password
+			- confirm password
+			      register
+		
+static file handling:
+---------------------
+	.css,.js,imges
+static files creation:
+---------------------
+	- MyApp->newfolder->static->css,js,images
+
+DTL(Django template language):
+------------------------------
+	- conditional statements:	
+		if,elif,else
+		{% if condition %}
+
+                {% endif %}
+
+		{% if  ...%}
+		{% elif...%}
+		.
+		.
+		{% else%}
+		{% endif%}
+
+	- control statements:
+		for,while 
+		{% for i in varianame %}
+			## block of code
+		{% endfor%}
+
+		{% while(condition)%}
+			## statements
+		{% endwhile %}
+
+js->alert messages->alert("message")
+image
+	
+
+
+
+
+
+
+
+
+
+
+
+- BootStrap:  
+------------ 
+	- for responsive web design 
+	- bootstrap classes->design
+	   <button>--->padding:78px
+	- bootstrap:
+		<div class="container">
+
+		</div>
+		
+online bootstrap:
+-----------------
+	- css,js--->copied from online
+
+offline bootstrap:
+-----------------
+	- static->css->bootstrap.min.css
+		->js->bootstrap.min.js
+
+Day Objectives:
+--------------
+	- Django admin
+		- admin
+		- superuser account
+			operational error- python manage.py migrate
+			python manage.py createsuperuser
+
+
+Model Creation:
+--------------
+	model:db connections
+	- by using classes we can create db
+		class classname-->db name
+	data base:
+	----------
+		- collection of data 
+		- https://sqlitebrowser.org/dl/
+			Student
+			    - name
+			    - rollnum
+			    - age
+			    - mobile
+			    - email 
+			    - address
+	-Django InputFields:
+		- CharField
+		- IntegerField
+		- EmailField
+		- TextField
+	        - ImageField
+	- After creation of model we have to do two 
+operations:
+
+	- makemigrations(it will generate one interface 
+file for db)
+		"python manage.py makemigrations"
+
+	- migrate(it converts interface file to table)
+
+		" python manage.py migrate"
+
+
+oops(class,object,constructor):
+
+	
+	def __str__(self):--->default
+		### statements
+	
+	def __str__(self,a,b)-->parametrized
+		## statements	
+
+
+CRUD Operations:
+----------------
+C-create a db
+R-retrieve a db
+U-update a db
+D-delete a db
+
+ORM(Object relational Mapping):
+-------------------------------
+C-create a db:
+--------------
+	- ORM Queries
+		- python shell
+			- python manage.py shell 
+
+		- from MyApp.models import Student
+
+-save():
+--------
+	obj=modelname(field='value',field='value'....fn='vn')
+	obj.save()
+
+ex:obj=Student(name='siri',rollnum='130767786',age='12',
+mobile='98798789778',email='siri@gmail.com',
+address='srikakulam')
+
+obj.save()
+
+- modelname.objects.create(field='value'..........)
+ex: Student.objects.create(name='',rollnum='',age='',
+mobile='',email='',address='')
+
+R-retrieve a db:
+----------------
+	- if you want retrieve entire data from db
+		ob=modelname.objects.all()
+		ob
+	- if you want retrieve only columns data
+		for i in ob:
+			print(i.name)
+
+	- if you want to retrieve only first record
+		modelname.objects.first()
+	
+	- if you want to retrieve only last record
+		modelname.objects.last()
+
+	- slicing:  [start range:end range+1:steps]
+	 ----------
+		- modelname.objects.all()[:4]
+		- modelname.objects.all()[::-1]
+		- modelname.objects.all()[::2]
+
+	-  if you want to retrieve specific record
+		-get(id=number)---unique records
+		- d=modelname.objects.get(id=2)
+		  d
+	- if you want to retrieve multiple records data
+		- filter(fieldname=value)-->duplicates data
+		- modelname.objects.filter(age='23')
+
+
+
+U-update a db:
+--------------
+	- if you want to update specific record
+		- d=modelname.objects.get(id=2)
+		- d
+		- d.age=30
+		- d.save()
+		
+	- if you want to update specific column for all
+user
+		- obj=modelname.objects.all().update(age=20)
+		  obj
+
+
+
+D-delete a db:
+-------------
+	- if you want delete specific record
+
+		-obj= modelname.objects.get(id=3)
+		 obj
+		 obj.delete()
+
+
+CRUD(HTML pages):
+-----------------
+	url->views->template
+	models->views
+	template->views
+	views->template,model
+requirements:
+-------------
+	-html page(url,view)
+		- student(name,roll,age,mbl,email,address)
+		- csrf_token
+
+HTTP Request methods:
+--------------------
+		- GET
+		- POST
+
+	
+
+
+Day Objectives:
+---------------
+	- CRUD(Html)
+	 -------------
+		- Retrieve
+			-modelname.objects.all()
+			- render(req,filelocation,dic)
+			-dic:views->data->templates
+			- DTL->printing->{{}}
+		- Update
+			- obj=modelname.objects.get(id=n)
+			  obj
+			  obj.age=20
+			  obj.save()
+			  
+			- http://localhost:8000/update/2/
+			- template->method="post",token
+			- views-> if request.method=="post":
+							
+		- Delete
+			- obj=modelname.objects.get(id=n)
+			  obj
+				Are you sure to delete data record
+					delete   cancel
+			  obj.delete()	
+		
+
+
+               https://github.com/srikanya659qwe/Giet-Django
+
+
+
+
+
+
+
+
+
+
